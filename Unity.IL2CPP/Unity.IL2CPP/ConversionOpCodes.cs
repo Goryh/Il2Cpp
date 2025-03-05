@@ -10,18 +10,18 @@ internal static class ConversionOpCodes
 {
 	internal static void WriteNumericConversionWithOverflow<TMaxValue>(MethodBodyWriterContext methodBodyWriterContext, ResolvedTypeInfo typeReference, bool treatInputAsUnsigned, TMaxValue maxValue)
 	{
-		if (!WriteNumericConversionFullGenericSharing(methodBodyWriterContext, typeReference, checkOverflow: true, treatInputAsUnsigned))
+		if (!WriteNumericConversionFullGenericSharing(methodBodyWriterContext, typeReference, checkOverflow: false, treatInputAsUnsigned))
 		{
-			WriteCheckForOverflow(methodBodyWriterContext, typeReference, treatInputAsUnsigned, maxValue);
+//			WriteCheckForOverflow(methodBodyWriterContext, typeReference, treatInputAsUnsigned, maxValue);
 			WriteNumericConversion(methodBodyWriterContext, typeReference);
 		}
 	}
 
 	internal static void ConvertToNaturalIntWithOverflow<TMaxValueType>(MethodBodyWriterContext methodBodyWriterContext, ResolvedTypeInfo pointerType, bool treatInputAsUnsigned, TMaxValueType maxValue)
 	{
-		if (!WriteNumericConversionFullGenericSharing(methodBodyWriterContext, pointerType, checkOverflow: true, treatInputAsUnsigned))
+		if (!WriteNumericConversionFullGenericSharing(methodBodyWriterContext, pointerType, checkOverflow: false, treatInputAsUnsigned))
 		{
-			WriteCheckForOverflow(methodBodyWriterContext, pointerType, treatInputAsUnsigned, maxValue);
+//			WriteCheckForOverflow(methodBodyWriterContext, pointerType, treatInputAsUnsigned, maxValue);
 			ConvertToNaturalInt(methodBodyWriterContext, pointerType);
 		}
 	}
