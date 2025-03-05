@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "il2cpp", "il2cpp\il2cpp.csproj", "{A9EC803E-2301-517C-9A07-E20B391895C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.IL2CPP", "Unity.IL2CPP\Unity.IL2CPP.csproj", "{B669E9E1-7BE5-D0B6-6F65-C79CC3240E95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9EC803E-2301-517C-9A07-E20B391895C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9EC803E-2301-517C-9A07-E20B391895C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9EC803E-2301-517C-9A07-E20B391895C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9EC803E-2301-517C-9A07-E20B391895C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B669E9E1-7BE5-D0B6-6F65-C79CC3240E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B669E9E1-7BE5-D0B6-6F65-C79CC3240E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B669E9E1-7BE5-D0B6-6F65-C79CC3240E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B669E9E1-7BE5-D0B6-6F65-C79CC3240E95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BF66D58-0622-44D8-9609-AD05094E8DF0}
+	EndGlobalSection
+EndGlobal

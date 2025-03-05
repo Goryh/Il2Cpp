@@ -1,0 +1,260 @@
+using Unity.IL2CPP.Contexts.Collectors;
+using Unity.IL2CPP.Contexts.Components;
+using Unity.IL2CPP.Contexts.Forking.Providers;
+using Unity.IL2CPP.Contexts.Services;
+using Unity.IL2CPP.Metadata;
+using Unity.IL2CPP.Naming;
+using Unity.IL2CPP.Symbols;
+
+namespace Unity.IL2CPP.Contexts.Forking;
+
+public class ForkedDataContainer : IGlobalContextCollectorProvider, IGlobalContextResultsProvider, IGlobalContextServicesProvider, IGlobalContextStatefulServicesProvider, IUnrestrictedContextCollectorProvider, IUnrestrictedContextServicesProvider, IUnrestrictedContextStatefulServicesProvider
+{
+	public MetadataUsageCollectorComponent MetadataUsage;
+
+	public MethodCollectorComponent Methods;
+
+	public SymbolsCollector Symbols;
+
+	public IndirectCallCollectorComponent IndirectCalls;
+
+	public TypeCollectorComponent TypeCollector;
+
+	public GenericMethodCollectorComponent GenericMethodCollector;
+
+	public RuntimeImplementedMethodWriterCollectorComponent RuntimeImplementedMethodWriterCollector;
+
+	public StatsComponent Stats;
+
+	public MatchedAssemblyMethodSourceFilesComponent MatchedAssemblyMethodSourceFiles;
+
+	public ReversePInvokeWrapperComponent ReversePInvokeWrappers;
+
+	public WindowsRuntimeTypeWithNameComponent WindowsRuntimeTypeWithNames;
+
+	public CCWMarshallingFunctionComponent CcwMarshallingFunctions;
+
+	public InteropGuidComponent InteropGuids;
+
+	public TypeMarshallingFunctionsComponent TypeMarshallingFunctions;
+
+	public WrapperForDelegateFromManagedToNativeComponent WrappersForDelegateFromManagedToNative;
+
+	public IMethodCollector CollectorMethods;
+
+	public IIndirectCallCollector CollectorIndirectCalls;
+
+	public ISymbolsCollector CollectorSymbols;
+
+	public IMetadataUsageCollectorWriterService CollectorMetadataUsage;
+
+	public IStatsWriterService CollectorStats;
+
+	public ITypeCollector CollectorTypes;
+
+	public IGenericMethodCollector CollectorGenericMethods;
+
+	public IRuntimeImplementedMethodWriterCollector CollectorRuntimeImplementedMethodWriter;
+
+	public IMatchedAssemblyMethodSourceFilesCollector CollectorMatchedAssemblyMethodSourceFiles;
+
+	public IReversePInvokeWrapperCollector CollectorReversePInvokeWrappers;
+
+	public IWindowsRuntimeTypeWithNameCollector CollectorWindowsRuntimeTypeWithNames;
+
+	public ICCWMarshallingFunctionCollector CollectorCcwMarshallingFunctions;
+
+	public IInteropGuidCollector CollectorInteropGuids;
+
+	public ITypeMarshallingFunctionsCollector CollectorTypeMarshallingFunctions;
+
+	public IWrapperForDelegateFromManagedToNativeCollector CollectorWrappersForDelegateFromManagedToNative;
+
+	public SourceAnnotationWriterComponent SourceAnnotationWriter;
+
+	public NamingComponent Naming;
+
+	public ErrorInformationComponent ErrorInformation;
+
+	public ImmediateSchedulerComponent Scheduler;
+
+	public DiagnosticsComponent Diagnostics;
+
+	public MessageLoggerComponent MessageLogger;
+
+	public VTableBuilderComponent VTableBuilder;
+
+	public TypeFactoryComponent TypeFactory;
+
+	public PathFactoryComponent PathFactory;
+
+	public INamingService StatefulServicesNaming;
+
+	public ISourceAnnotationWriter StatefulServicesSourceAnnotationWriter;
+
+	public IErrorInformationService StatefulServicesErrorInformation;
+
+	public IWorkScheduler StatefulServicesScheduler;
+
+	public IDiagnosticsService StatefulServicesDiagnostics;
+
+	public IMessageLogger StatefulServicesMessageLogger;
+
+	public IVTableBuilderService StatefulServicesVTable;
+
+	public IDataModelService StatefulServiceTypeFactory;
+
+	public IPathFactoryService StatefulServicesPathFactory;
+
+	public ICallMappingComponent ICallMapping;
+
+	public GuidProviderComponent GuidProvider;
+
+	public TypeProviderComponent TypeProvider;
+
+	public WindowsRuntimeProjectionsComponent WindowsRuntimeProjections;
+
+	public ObjectFactoryComponent Factory;
+
+	public ContextScopeServiceComponent ContextScope;
+
+	public TinyProfilerComponent TinyProfiler;
+
+	public IGuidProvider ServicesGuidProvider;
+
+	public ITypeProviderService ServicesTypeProvider;
+
+	public IObjectFactory ServicesFactory;
+
+	public IWindowsRuntimeProjections ServicesWindowsRuntime;
+
+	public IICallMappingService ServicesICallMapping;
+
+	public IContextScopeService ServicesContextScopeService;
+
+	public ITinyProfilerService ServicesTinyProfiler;
+
+	MetadataUsageCollectorComponent IUnrestrictedContextCollectorProvider.MetadataUsage => MetadataUsage;
+
+	MethodCollectorComponent IUnrestrictedContextCollectorProvider.Methods => Methods;
+
+	SymbolsCollector IUnrestrictedContextCollectorProvider.Symbols => Symbols;
+
+	IndirectCallCollectorComponent IUnrestrictedContextCollectorProvider.IndirectCalls => IndirectCalls;
+
+	TypeCollectorComponent IUnrestrictedContextCollectorProvider.TypeCollector => TypeCollector;
+
+	GenericMethodCollectorComponent IUnrestrictedContextCollectorProvider.GenericMethodCollector => GenericMethodCollector;
+
+	RuntimeImplementedMethodWriterCollectorComponent IUnrestrictedContextCollectorProvider.RuntimeImplementedMethodWriterCollector => RuntimeImplementedMethodWriterCollector;
+
+	PathFactoryComponent IUnrestrictedContextStatefulServicesProvider.PathFactory => PathFactory;
+
+	ContextScopeServiceComponent IUnrestrictedContextServicesProvider.ContextScope => ContextScope;
+
+	TinyProfilerComponent IUnrestrictedContextServicesProvider.TinyProfiler => TinyProfiler;
+
+	ITinyProfilerService IGlobalContextServicesProvider.TinyProfiler => ServicesTinyProfiler;
+
+	IDiagnosticsService IGlobalContextStatefulServicesProvider.Diagnostics => StatefulServicesDiagnostics;
+
+	IMessageLogger IGlobalContextStatefulServicesProvider.MessageLogger => StatefulServicesMessageLogger;
+
+	IPathFactoryService IGlobalContextStatefulServicesProvider.PathFactory => StatefulServicesPathFactory;
+
+	IContextScopeService IGlobalContextServicesProvider.ContextScope => ContextScope;
+
+	StatsComponent IUnrestrictedContextCollectorProvider.Stats => Stats;
+
+	VTableBuilderComponent IUnrestrictedContextStatefulServicesProvider.VTableBuilder => VTableBuilder;
+
+	TypeFactoryComponent IUnrestrictedContextStatefulServicesProvider.TypeFactory => TypeFactory;
+
+	MatchedAssemblyMethodSourceFilesComponent IUnrestrictedContextCollectorProvider.MatchedAssemblyMethodSourceFiles => MatchedAssemblyMethodSourceFiles;
+
+	ReversePInvokeWrapperComponent IUnrestrictedContextCollectorProvider.ReversePInvokeWrappers => ReversePInvokeWrappers;
+
+	WindowsRuntimeTypeWithNameComponent IUnrestrictedContextCollectorProvider.WindowsRuntimeTypeWithNames => WindowsRuntimeTypeWithNames;
+
+	CCWMarshallingFunctionComponent IUnrestrictedContextCollectorProvider.CCWMarshallingFunctions => CcwMarshallingFunctions;
+
+	InteropGuidComponent IUnrestrictedContextCollectorProvider.InteropGuids => InteropGuids;
+
+	TypeMarshallingFunctionsComponent IUnrestrictedContextCollectorProvider.TypeMarshallingFunctions => TypeMarshallingFunctions;
+
+	WrapperForDelegateFromManagedToNativeComponent IUnrestrictedContextCollectorProvider.WrappersForDelegateFromManagedToNative => WrappersForDelegateFromManagedToNative;
+
+	IInteropGuidCollector IGlobalContextCollectorProvider.InteropGuids => CollectorInteropGuids;
+
+	ITypeMarshallingFunctionsCollector IGlobalContextCollectorProvider.TypeMarshallingFunctions => CollectorTypeMarshallingFunctions;
+
+	IWrapperForDelegateFromManagedToNativeCollector IGlobalContextCollectorProvider.WrappersForDelegateFromManagedToNative => CollectorWrappersForDelegateFromManagedToNative;
+
+	ICCWMarshallingFunctionCollector IGlobalContextCollectorProvider.CCWMarshallingFunctions => CollectorCcwMarshallingFunctions;
+
+	IReversePInvokeWrapperCollector IGlobalContextCollectorProvider.ReversePInvokeWrappers => CollectorReversePInvokeWrappers;
+
+	IWindowsRuntimeTypeWithNameCollector IGlobalContextCollectorProvider.WindowsRuntimeTypeWithNames => CollectorWindowsRuntimeTypeWithNames;
+
+	IMethodCollector IGlobalContextCollectorProvider.Methods => CollectorMethods;
+
+	IIndirectCallCollector IGlobalContextCollectorProvider.IndirectCalls => CollectorIndirectCalls;
+
+	ISymbolsCollector IGlobalContextCollectorProvider.Symbols => CollectorSymbols;
+
+	IMatchedAssemblyMethodSourceFilesCollector IGlobalContextCollectorProvider.MatchedAssemblyMethodSourceFiles => CollectorMatchedAssemblyMethodSourceFiles;
+
+	IMetadataUsageCollectorWriterService IGlobalContextCollectorProvider.MetadataUsage => CollectorMetadataUsage;
+
+	IStatsWriterService IGlobalContextCollectorProvider.Stats => CollectorStats;
+
+	ITypeCollector IGlobalContextCollectorProvider.Types => CollectorTypes;
+
+	IGenericMethodCollector IGlobalContextCollectorProvider.GenericMethods => CollectorGenericMethods;
+
+	IRuntimeImplementedMethodWriterCollector IGlobalContextCollectorProvider.RuntimeImplementedMethodWriters => CollectorRuntimeImplementedMethodWriter;
+
+	IVTableBuilderService IGlobalContextStatefulServicesProvider.VTable => StatefulServicesVTable;
+
+	IDataModelService IGlobalContextStatefulServicesProvider.TypeFactory => StatefulServiceTypeFactory;
+
+	ICallMappingComponent IUnrestrictedContextServicesProvider.ICallMapping => ICallMapping;
+
+	GuidProviderComponent IUnrestrictedContextServicesProvider.GuidProvider => GuidProvider;
+
+	TypeProviderComponent IUnrestrictedContextServicesProvider.TypeProvider => TypeProvider;
+
+	WindowsRuntimeProjectionsComponent IUnrestrictedContextServicesProvider.WindowsRuntimeProjections => WindowsRuntimeProjections;
+
+	ObjectFactoryComponent IUnrestrictedContextServicesProvider.Factory => Factory;
+
+	DiagnosticsComponent IUnrestrictedContextStatefulServicesProvider.Diagnostics => Diagnostics;
+
+	MessageLoggerComponent IUnrestrictedContextStatefulServicesProvider.MessageLogger => MessageLogger;
+
+	IGuidProvider IGlobalContextServicesProvider.GuidProvider => ServicesGuidProvider;
+
+	ITypeProviderService IGlobalContextServicesProvider.TypeProvider => ServicesTypeProvider;
+
+	IObjectFactory IGlobalContextServicesProvider.Factory => ServicesFactory;
+
+	IWindowsRuntimeProjections IGlobalContextServicesProvider.WindowsRuntime => ServicesWindowsRuntime;
+
+	IICallMappingService IGlobalContextServicesProvider.ICallMapping => ServicesICallMapping;
+
+	SourceAnnotationWriterComponent IUnrestrictedContextStatefulServicesProvider.SourceAnnotationWriter => SourceAnnotationWriter;
+
+	NamingComponent IUnrestrictedContextStatefulServicesProvider.Naming => Naming;
+
+	ErrorInformationComponent IUnrestrictedContextStatefulServicesProvider.ErrorInformation => ErrorInformation;
+
+	ImmediateSchedulerComponent IUnrestrictedContextStatefulServicesProvider.Scheduler => Scheduler;
+
+	IWorkScheduler IGlobalContextStatefulServicesProvider.Scheduler => StatefulServicesScheduler;
+
+	INamingService IGlobalContextStatefulServicesProvider.Naming => StatefulServicesNaming;
+
+	ISourceAnnotationWriter IGlobalContextStatefulServicesProvider.SourceAnnotationWriter => StatefulServicesSourceAnnotationWriter;
+
+	IErrorInformationService IGlobalContextStatefulServicesProvider.ErrorInformation => StatefulServicesErrorInformation;
+}

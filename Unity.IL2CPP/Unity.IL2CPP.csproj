@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Unity.IL2CPP</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>netcoreapp7.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Unity.IL2CPP.DataModel">
+      <HintPath>..\orig_deps\Unity.IL2CPP.DataModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.IL2CPP.Common35">
+      <HintPath>..\orig_deps\Unity.IL2CPP.Common35.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.IL2CPP.CompilerServices">
+      <HintPath>..\orig_deps\Unity.IL2CPP.CompilerServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.IL2CPP.Common">
+      <HintPath>..\orig_deps\Unity.IL2CPP.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Bee.TinyProfiler2">
+      <HintPath>..\orig_deps\Bee.TinyProfiler2.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TinyProfiler">
+      <HintPath>..\orig_deps\Unity.TinyProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.IL2CPP.Api">
+      <HintPath>..\orig_deps\Unity.IL2CPP.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.IL2CPP.Api.Output">
+      <HintPath>..\orig_deps\Unity.IL2CPP.Api.Output.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
