@@ -217,7 +217,7 @@ internal static class PerAssemblyCodeMetadataWriter
 				{
 					string rgctxTokenOrIndexName = GetRgctxTokenOrIndexName(context, rgctxEntry);
 					rgctxIndexNames.Add(new RgctxEntryName(rgctxTokenOrIndexName, rgctxEntry));
-					return $"{{ (Il2CppRGCTXDataType){rgctxEntry.Type}, (const void *)&{rgctxTokenOrIndexName} }}";
+					return $"{{ (Il2CppRGCTXDataType){(int)rgctxEntry.Type}, (const void *)&{rgctxTokenOrIndexName} }}";
 				}
 				catch (KeyNotFoundException e)
 				{
