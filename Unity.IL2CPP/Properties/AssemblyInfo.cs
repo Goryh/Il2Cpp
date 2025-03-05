@@ -15,4 +15,4 @@ using System.Security.Permissions;
 [assembly: AssemblyProduct("Unity.IL2CPP")]
 [assembly: AssemblyTitle("Unity.IL2CPP")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[module: System.Runtime.CompilerServices.RefSafetyRules(11)]
+//[module: System.Runtime.CompilerServices.RefSafetyRules(11)]

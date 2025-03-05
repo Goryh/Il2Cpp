@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Unity.IL2CPP.Api.Output.Analytics;
@@ -6,6 +7,7 @@ using Unity.IL2CPP.AssemblyConversion.PrimaryCollection.Results;
 using Unity.IL2CPP.Contexts;
 using Unity.IL2CPP.Contexts.Forking;
 using Unity.IL2CPP.Contexts.Forking.Providers;
+using Unity.IL2CPP.Naming;
 
 namespace Unity.IL2CPP.AssemblyConversion.InProcessPerAssembly;
 

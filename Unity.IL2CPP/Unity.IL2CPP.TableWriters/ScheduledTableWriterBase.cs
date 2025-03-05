@@ -55,7 +55,7 @@ public abstract class ScheduledTableWriterBase<TItem, TCodeWriter> where TCodeWr
 			}
 			reference.WriteLine(tableInfo.GetDeclaration());
 		}
-		ref TCodeWriter reference2;
+		ref TCodeWriter reference2 = ref writer;
 		if (default(TCodeWriter) == null)
 		{
 			val = writer;
@@ -63,7 +63,7 @@ public abstract class ScheduledTableWriterBase<TItem, TCodeWriter> where TCodeWr
 		}
 		else
 		{
-			reference2 = ref writer;
+		//	reference2 = ref writer;
 		}
 		ref TCodeWriter reference3 = ref reference2;
 		reference3.WriteLine($"{tableInfo.Type} {tableInfo.Name}[{((tableInfo.Count == 0) ? "1" : tableInfo.Count.ToString())}] = ");
@@ -75,12 +75,12 @@ public abstract class ScheduledTableWriterBase<TItem, TCodeWriter> where TCodeWr
 		writer.BeginBlock();
 		foreach (TTableItem data in items)
 		{
-			ref TCodeWriter reference = ref writer;
+			TCodeWriter reference = writer;
 			TCodeWriter val = default(TCodeWriter);
 			if (val == null)
 			{
 				val = reference;
-				reference = ref val;
+				reference = val;
 			}
 			reference.Write(getTableValue(data));
 			writer.Write(",");

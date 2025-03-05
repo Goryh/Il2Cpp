@@ -17,4 +17,4 @@ using Unity.IL2CPP.Api.Output.Analytics;
 [assembly: AssemblyProduct("il2cpp")]
 [assembly: AssemblyTitle("il2cpp")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[module: System.Runtime.CompilerServices.RefSafetyRules(11)]
+//[module: System.Runtime.CompilerServices.RefSafetyRules(11)]
