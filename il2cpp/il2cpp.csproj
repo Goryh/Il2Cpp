@@ -9,7 +9,9 @@
     <LangVersion>12.0</LangVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
-  <PropertyGroup />
+  <PropertyGroup>
+    <BaseOutputPath>..\bin</BaseOutputPath>
+  </PropertyGroup>
   <ItemGroup />
   <ItemGroup>
     <Reference Include="Unity.IL2CPP.Api.Output">
