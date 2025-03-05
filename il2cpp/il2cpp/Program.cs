@@ -29,7 +29,7 @@ public class Program
 		Thread.CurrentThread.Name = "Main thread";
 		try
 		{
-			return (int)Run(args, setInvariantCulture: false, throwExceptions: false);
+			return (int)Run(args, setInvariantCulture: true, throwExceptions: false);
 		}
 		catch (Exception value)
 		{
