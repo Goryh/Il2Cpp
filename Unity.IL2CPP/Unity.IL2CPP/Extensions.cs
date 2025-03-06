@@ -213,7 +213,7 @@ public static class Extensions
 	private static bool IsCheapGetterSetter(MethodDefinition method)
 	{
 		ReadOnlyCollection<Instruction> instructions = method.Body.Instructions;
-		if (instructions.Count > 4)
+		if (instructions.Count > 100)
 		{
 			return false;
 		}
