@@ -257,6 +257,10 @@ public static class Extensions
 		{
 			return false;
 		}
+		if (def.DeclaringType.Name.StartsWith("ValueTuple") && def.DeclaringType.Namespace == "System")
+		{
+			return true;
+		}
 		if (!def.HasBody)
 		{
 			if (def.DeclaringType.IsDelegate && def.Name == "Invoke")
