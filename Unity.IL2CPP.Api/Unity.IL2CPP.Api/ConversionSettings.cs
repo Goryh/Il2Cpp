@@ -9,6 +9,10 @@ public class ConversionSettings
 	[HelpDetails("Enables generation of null checks", null)]
 	public bool EmitNullChecks;
 
+	[Analytics("Explicitly disable NullChecks even if it was enabled")]
+	[HelpDetails("Explicitly disable NullChecks even if it was enabled", null)]
+	public bool DisableNullChecks;
+
 	[Analytics("Whether or not emitting stack traces was enabled\n\nNote that this option can also be enabled via the code generation option field")]
 	[HelpDetails("Enables generation of stacktrace sentries in C++ code at the start of every managed method. This enables support for stacktraces for platforms that do not have system APIs to walk the stack (for example, one such platform is WebGL)", null)]
 	public bool EnableStacktrace;
@@ -24,6 +28,10 @@ public class ConversionSettings
 	[Analytics("Whether or not array bounds checks was enabled\n\nNote that this option can also be enabled via the code generation option field")]
 	[HelpDetails("Enables generation of array bounds checks", null)]
 	public bool EnableArrayBoundsCheck;
+
+	[Analytics("Explicitly disable ArrayBoundCheck even if it was enabled")]
+	[HelpDetails("Explicitly disable ArrayBoundCheck even if it was enabled", null)]
+	public bool DisableArrayBoundsCheck;
 
 	[Analytics("Whether or not divide by zero checks was enabled\n\nNote that this option can also be enabled via the code generation option field")]
 	[HelpDetails("Enables generation of divide by zero checks", null)]

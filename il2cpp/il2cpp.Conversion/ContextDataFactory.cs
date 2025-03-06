@@ -45,7 +45,7 @@ internal static class ContextDataFactory
 		{
 			options |= CodeGenerationOptions.EnableStacktrace;
 		}
-		if (il2CppCommandLineArguments.ConversionRequest.Settings.EnableArrayBoundsCheck)
+		if (il2CppCommandLineArguments.ConversionRequest.Settings.EnableArrayBoundsCheck && !il2CppCommandLineArguments.ConversionRequest.Settings.DisableArrayBoundsCheck)
 		{
 			options |= CodeGenerationOptions.EnableArrayBoundsCheck;
 		}
@@ -53,7 +53,7 @@ internal static class ContextDataFactory
 		{
 			options |= CodeGenerationOptions.EnableDivideByZeroCheck;
 		}
-		if (il2CppCommandLineArguments.ConversionRequest.Settings.EmitNullChecks)
+		if (il2CppCommandLineArguments.ConversionRequest.Settings.EmitNullChecks && !il2CppCommandLineArguments.ConversionRequest.Settings.DisableNullChecks)
 		{
 			options |= CodeGenerationOptions.EnableNullChecks;
 		}
