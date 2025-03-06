@@ -1,11 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "il2cpp", "il2cpp\il2cpp.csproj", "{A9EC803E-2301-517C-9A07-E20B391895C3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B669E9E1-7BE5-D0B6-6F65-C79CC3240E95} = {B669E9E1-7BE5-D0B6-6F65-C79CC3240E95}
+		{D94AADC6-D391-983E-7B6D-00B3C106DAA0} = {D94AADC6-D391-983E-7B6D-00B3C106DAA0}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.IL2CPP", "Unity.IL2CPP\Unity.IL2CPP.csproj", "{B669E9E1-7BE5-D0B6-6F65-C79CC3240E95}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D94AADC6-D391-983E-7B6D-00B3C106DAA0} = {D94AADC6-D391-983E-7B6D-00B3C106DAA0}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.IL2CPP.Api", "Unity.IL2CPP.Api\Unity.IL2CPP.Api.csproj", "{D94AADC6-D391-983E-7B6D-00B3C106DAA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +30,10 @@ Global
 		{B669E9E1-7BE5-D0B6-6F65-C79CC3240E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B669E9E1-7BE5-D0B6-6F65-C79CC3240E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B669E9E1-7BE5-D0B6-6F65-C79CC3240E95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D94AADC6-D391-983E-7B6D-00B3C106DAA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D94AADC6-D391-983E-7B6D-00B3C106DAA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D94AADC6-D391-983E-7B6D-00B3C106DAA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D94AADC6-D391-983E-7B6D-00B3C106DAA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

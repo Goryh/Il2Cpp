@@ -12,7 +12,10 @@
   <PropertyGroup>
     <BaseOutputPath>..\bin</BaseOutputPath>
   </PropertyGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Unity.IL2CPP.Api\Unity.IL2CPP.Api.csproj" />
+    <ProjectReference Include="..\Unity.IL2CPP\Unity.IL2CPP.csproj" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="Unity.IL2CPP.Api.Output">
       <HintPath>..\orig_deps\Unity.IL2CPP.Api.Output.dll</HintPath>
@@ -26,17 +29,11 @@
     <Reference Include="Unity.IL2CPP.Common35">
       <HintPath>..\orig_deps\Unity.IL2CPP.Common35.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.IL2CPP.Api">
-      <HintPath>..\orig_deps\Unity.IL2CPP.Api.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TinyProfiler">
       <HintPath>..\orig_deps\Unity.TinyProfiler.dll</HintPath>
     </Reference>
     <Reference Include="Bee.TinyProfiler2">
       <HintPath>..\orig_deps\Bee.TinyProfiler2.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.IL2CPP">
-      <HintPath>..\orig_deps\Unity.IL2CPP.dll</HintPath>
     </Reference>
     <Reference Include="Unity.IL2CPP.Shell">
       <HintPath>..\orig_deps\Unity.IL2CPP.Shell.dll</HintPath>

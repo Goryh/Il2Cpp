@@ -11,7 +11,9 @@
   <PropertyGroup>
     <BaseOutputPath>..\bin</BaseOutputPath>
   </PropertyGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Unity.IL2CPP.Api\Unity.IL2CPP.Api.csproj" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="Unity.IL2CPP.DataModel">
       <HintPath>..\orig_deps\Unity.IL2CPP.DataModel.dll</HintPath>
@@ -30,9 +32,6 @@
     </Reference>
     <Reference Include="Unity.TinyProfiler">
       <HintPath>..\orig_deps\Unity.TinyProfiler.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.IL2CPP.Api">
-      <HintPath>..\orig_deps\Unity.IL2CPP.Api.dll</HintPath>
     </Reference>
     <Reference Include="Unity.IL2CPP.Api.Output">
       <HintPath>..\orig_deps\Unity.IL2CPP.Api.Output.dll</HintPath>

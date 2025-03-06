@@ -4,3 +4,5 @@
 /Unity.IL2CPP/obj
 /bin
 .vs
+/test
+/Unity.IL2CPP.Api/obj
