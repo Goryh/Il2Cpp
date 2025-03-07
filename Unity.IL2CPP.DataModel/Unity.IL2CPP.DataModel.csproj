@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssemblyName>Unity.IL2CPP</AssemblyName>
+    <AssemblyName>Unity.IL2CPP.DataModel</AssemblyName>
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <TargetFramework>netcoreapp7.0</TargetFramework>
   </PropertyGroup>
@@ -11,16 +11,16 @@
   <PropertyGroup>
     <BaseOutputPath>..\bin</BaseOutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Unity.IL2CPP.Api\Unity.IL2CPP.Api.csproj" />
-    <ProjectReference Include="..\Unity.IL2CPP.DataModel\Unity.IL2CPP.DataModel.csproj" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Reference Include="Unity.IL2CPP.Common35">
       <HintPath>..\orig_deps\Unity.IL2CPP.Common35.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.IL2CPP.CompilerServices">
-      <HintPath>..\orig_deps\Unity.IL2CPP.CompilerServices.dll</HintPath>
+    <Reference Include="Mono.Cecil">
+      <HintPath>..\orig_deps\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TinyProfiler">
+      <HintPath>..\orig_deps\Unity.TinyProfiler.dll</HintPath>
     </Reference>
     <Reference Include="Unity.IL2CPP.Common">
       <HintPath>..\orig_deps\Unity.IL2CPP.Common.dll</HintPath>
@@ -28,11 +28,14 @@
     <Reference Include="Bee.TinyProfiler2">
       <HintPath>..\orig_deps\Bee.TinyProfiler2.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TinyProfiler">
-      <HintPath>..\orig_deps\Unity.TinyProfiler.dll</HintPath>
+    <Reference Include="Unity.Cecil.Awesome">
+      <HintPath>..\orig_deps\Unity.Cecil.Awesome.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.IL2CPP.Api.Output">
-      <HintPath>..\orig_deps\Unity.IL2CPP.Api.Output.dll</HintPath>
+    <Reference Include="Mono.Cecil.Rocks">
+      <HintPath>..\orig_deps\Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb">
+      <HintPath>..\orig_deps\Mono.Cecil.Mdb.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
