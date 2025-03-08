@@ -144,7 +144,7 @@ public static class CodeWriterExtensions
 			prologueWriter.Indent(writer.IndentationLevel + 1);
 			IRuntimeMetadataAccess runtimeMetaDataAccess = writer.GetDefaultRuntimeMetadataAccess(methodRef, metadataUsage, methodUsage, writingMethodFor);
 			writeMethodBody(methodBodyWriter, runtimeMetaDataAccess);
-			bool needsGenericMethodInitialization = writingMethodFor == WritingMethodFor.MethodBody && !writer.Context.Global.Parameters.DisableFullGenericSharing && runtimeMetaDataAccess.GetMethodRgctxDataUsage().HasFlag(GenericContextUsage.Method);
+			bool needsGenericMethodInitialization = writingMethodFor == WritingMethodFor.MethodBody && !writer.Context.Global.Parameters.DisableFullGenericSharing && runtimeMetaDataAccess.GetMethodRgctxDataUsage().HasFlag(GenericContextUsage.Method) && !methodRef.IsGenericHiddenMethodNeverUsed;
 			if (metadataUsage.UsesMetadata || needsGenericMethodInitialization)
 			{
 				WriteMethodMetadataInitialization(writer.Context, prologueWriter, identifier, metadataUsage, needsGenericMethodInitialization);

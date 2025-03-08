@@ -35,6 +35,10 @@ public static class GenericSharingAnalysis
 
 	public static bool ShouldTryToCallStaticConstructorBeforeMethodCall(ReadOnlyContext context, MethodReference targetMethod, MethodDefinition invokingMethod)
 	{
+		if (targetMethod.IsGenericHiddenMethodNeverUsed)
+		{
+			return false;
+		}
 		if (!targetMethod.HasThis || targetMethod.DeclaringType.IsValueType)
 		{
 			return true;

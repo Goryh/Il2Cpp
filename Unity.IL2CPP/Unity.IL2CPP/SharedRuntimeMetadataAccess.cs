@@ -371,6 +371,10 @@ public sealed class SharedRuntimeMetadataAccess : IRuntimeMetadataAccess
 
 	public string HiddenMethodInfo(MethodReference method)
 	{
+		if (method.IsGenericHiddenMethodNeverUsed)
+		{
+			return "NULL";
+		}
 		if (_writingMethodFor == WritingMethodFor.MethodBody && (method == _enclosingMethod || method == _enclosingMethod.Resolve()))
 		{
 			return "method";
@@ -380,6 +384,10 @@ public sealed class SharedRuntimeMetadataAccess : IRuntimeMetadataAccess
 
 	public string ConstrainedHiddenMethodInfo(TypeReference constrainedType, MethodReference method)
 	{
+		if (method.IsGenericHiddenMethodNeverUsed)
+		{
+			return "NULL";
+		}
 		if (_writingMethodFor == WritingMethodFor.MethodBody && (method == _enclosingMethod || method == _enclosingMethod.Resolve()))
 		{
 			return "method";

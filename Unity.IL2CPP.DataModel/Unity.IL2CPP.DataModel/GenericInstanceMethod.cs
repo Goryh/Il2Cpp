@@ -86,6 +86,8 @@ public class GenericInstanceMethod : MethodSpec, IGenericInstance, IMetadataToke
 
 	public override bool IsConstructor => MethodDef.IsConstructor;
 
+	public override bool IsGenericHiddenMethodNeverUsed => MethodDef.IsGenericHiddenMethodNeverUsed;
+
 	public override ReadOnlyCollection<ParameterDefinition> Parameters => MethodDef.Parameters;
 
 	internal override bool RequiresRidForNameUniqueness => MethodDef.RequiresRidForNameUniqueness;

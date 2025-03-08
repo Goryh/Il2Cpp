@@ -53,6 +53,8 @@ public class MethodRefOnTypeInst : MethodSpec
 
 	public override int CodeSize => MethodDef.CodeSize;
 
+	public override bool IsGenericHiddenMethodNeverUsed => MethodDef.IsGenericHiddenMethodNeverUsed;
+
 	internal override bool RequiresRidForNameUniqueness => MethodDef.RequiresRidForNameUniqueness;
 
 	public override MetadataToken MetadataToken => MethodDef.MetadataToken;

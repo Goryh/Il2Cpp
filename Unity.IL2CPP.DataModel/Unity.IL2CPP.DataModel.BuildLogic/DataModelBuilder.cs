@@ -66,6 +66,7 @@ public class DataModelBuilder : IDisposable
 		ReadOnlyCollection<UnderConstruction<FieldReference, Mono.Cecil.FieldReference>> allNonDefinitionFields = repositories.Fields.CurrentItems();
 		ReferencePopulationStage1(allNonDefinitionTypes, allNonDefinitionMethods);
 		ReferencePopulationStage2(allNonDefinitionTypes, allNonDefinitionMethods, allNonDefinitionFields);
+		PopulateGenerHiddenMethodUsage();
 		ReadOnlyCollection<AssemblyDefinition> assembliesSortedForPublicExposure = GetAssembliesSortedForPublicExposure();
 		_context.CompleteBuild(memberStore, assembliesSortedForPublicExposure);
 	}
@@ -438,6 +439,134 @@ public class DataModelBuilder : IDisposable
 		{
 			_cecilContext?.Dispose();
 			_disposed = true;
+		}
+	}
+
+	private void PopulateGenerHiddenMethodUsage()
+	{
+		for (int iteration = 0; iteration < 10; ++iteration)
+		{
+			bool anyFlips = false;
+			foreach (var assembly in _context.AssembliesOrderedByCostToProcess)
+			{
+				foreach (var method in assembly.AllMethods())
+				{
+					if (!method.HasBody)
+						continue;
+
+					if (!method.HasGenericParameters && !method.DeclaringType.HasGenericParameters)
+						continue;
+
+					if (method.IsGenericHiddenMethodNeverUsed)
+						continue;
+
+					bool hasNoAnyGenericMethodCalls = true;
+					var instructions = method.Body.Instructions;
+					foreach (var instr in instructions)
+					{
+						if (instr.OpCode == OpCodes.Initobj ||
+							instr.OpCode == OpCodes.Ldelema ||
+							instr.OpCode == OpCodes.Ldelem_I || instr.OpCode == OpCodes.Stelem_I ||
+							instr.OpCode == OpCodes.Ldelem_I1 || instr.OpCode == OpCodes.Stelem_I ||
+							instr.OpCode == OpCodes.Ldelem_I2 || instr.OpCode == OpCodes.Stelem_I2 ||
+							instr.OpCode == OpCodes.Ldelem_I4 || instr.OpCode == OpCodes.Stelem_I4 ||
+							instr.OpCode == OpCodes.Ldelem_I8 || instr.OpCode == OpCodes.Stelem_I8 ||
+							instr.OpCode == OpCodes.Ldelem_R4 || instr.OpCode == OpCodes.Stelem_R4 ||
+							instr.OpCode == OpCodes.Ldelem_R8 || instr.OpCode == OpCodes.Stelem_R8 ||
+							instr.OpCode == OpCodes.Ldelem_Ref || instr.OpCode == OpCodes.Stelem_Ref ||
+							instr.OpCode == OpCodes.Ldelem_Any || instr.OpCode == OpCodes.Stelem_Any ||
+							instr.OpCode == OpCodes.Ldelem_U1 ||
+							instr.OpCode == OpCodes.Ldelem_U2 ||
+							instr.OpCode == OpCodes.Ldelem_U4)
+							continue;
+
+						if (instr.OpCode == OpCodes.Newobj ||
+							instr.OpCode == OpCodes.Newarr ||
+							instr.OpCode == OpCodes.Castclass)
+						{
+							if (instr.Operand is MethodReference)
+							{
+								var operandMethod = instr.Operand as MethodReference;
+								if (operandMethod.ContainsGenericParameter || operandMethod.DeclaringType.ContainsGenericParameter)
+								{
+									hasNoAnyGenericMethodCalls = false;
+									break;
+								}
+							}
+							if (instr.Operand is MethodRefOnTypeInst ||
+								instr.Operand is GenericInstanceType)
+							{
+								hasNoAnyGenericMethodCalls = false;
+								break;
+							}
+						}
+
+						if (instr.Operand is MethodReference)
+						{
+							var operandMethod = instr.Operand as MethodReference;
+
+							if (operandMethod is GenericInstanceMethod)
+							{
+								var genericOperandMethod = operandMethod as GenericInstanceMethod;
+								if (genericOperandMethod.HasGenericArguments)
+								{
+									hasNoAnyGenericMethodCalls = false;
+									break;
+								}
+							}
+
+							if (operandMethod.DeclaringType is GenericInstanceType)
+							{
+								var genericInstanceType = operandMethod.DeclaringType as GenericInstanceType;
+								if (operandMethod.Name == "Invoke" && genericInstanceType.TypeDef.BaseType.FullName == "System.MulticastDelegate")
+								{
+									if (operandMethod is MethodRefOnTypeInst)
+									{
+										var operandMethodOnTypeInst = operandMethod as MethodRefOnTypeInst;
+										operandMethodOnTypeInst.MethodDef.InitializeInternalGenericUsage(true);
+									}
+									continue;
+								}
+							}
+
+
+							if (operandMethod.ContainsGenericParameter || operandMethod.DeclaringType.ContainsGenericParameter)
+							{
+								if (!operandMethod.IsGenericHiddenMethodNeverUsed)
+								{
+									hasNoAnyGenericMethodCalls = false;
+									break;
+								}
+							}
+						}
+
+						if (instr.Operand is GenericParameter)
+						{
+							hasNoAnyGenericMethodCalls = false;
+							break;
+						}
+
+						if (instr.Operand is FieldInst)
+						{
+							var field = instr.Operand as FieldInst;
+							if (field.IsStatic)
+							{
+								hasNoAnyGenericMethodCalls = false;
+								break;
+							}
+						}
+					}
+
+					//if( hasNoAnyGenericMethodCalls )
+					//	Console.WriteLine($"{method.FullName}");
+
+					anyFlips |= hasNoAnyGenericMethodCalls;
+					method.InitializeInternalGenericUsage(hasNoAnyGenericMethodCalls);
+				}
+			}
+
+			if (!anyFlips)
+				break;
 		}
 	}
 }

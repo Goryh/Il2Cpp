@@ -1578,7 +1578,7 @@ public class MethodBodyWriter
 				_writer.WriteStatement(_exceptionSupport.EmitPopActiveException(SystemExceptionTypeReference));
 			}
 			StackInfo exc = _valueStack.Pop();
-			_writer.WriteStatement(Emit.RaiseManagedException(exc.ToString(), _runtimeMetadataAccess.MethodInfo(_methodReference)));
+			_writer.WriteStatement(Emit.RaiseManagedException(exc.ToString(), _methodReference.IsGenericHiddenMethodNeverUsed ? "NULL" : _runtimeMetadataAccess.MethodInfo(_methodReference)));
 			break;
 		}
 		case Code.Ldfld:

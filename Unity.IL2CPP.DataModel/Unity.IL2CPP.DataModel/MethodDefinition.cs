@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Threading;
 using Mono.Cecil;
 using Unity.IL2CPP.DataModel.BuildLogic.Naming;
@@ -8,6 +9,7 @@ using Unity.IL2CPP.DataModel.Modify.Definitions;
 
 namespace Unity.IL2CPP.DataModel;
 
+[DebuggerDisplay("{FullName}")]
 public class MethodDefinition : MethodReference, IMemberDefinition, ICustomAttributeProvider, IMetadataTokenProvider, IMethodDefinitionUpdater
 {
 	internal readonly Mono.Cecil.MethodDefinition Definition;

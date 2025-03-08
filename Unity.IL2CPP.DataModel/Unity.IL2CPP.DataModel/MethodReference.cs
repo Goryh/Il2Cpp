@@ -17,6 +17,8 @@ public abstract class MethodReference : MemberReference, IGenericParameterProvid
 
 	private string _cppName;
 
+	protected bool _genericHiddenMethodNeverUsed;
+
 	private ReadOnlyCollection<GenericParameter> _genericParameters;
 
 	internal virtual bool IsDataModelGenerated => false;
@@ -189,6 +191,11 @@ public abstract class MethodReference : MemberReference, IGenericParameterProvid
 		}
 	}
 
+	public virtual bool IsGenericHiddenMethodNeverUsed
+	{
+		get => _genericHiddenMethodNeverUsed;
+	}
+
 	public virtual bool ContainsFullySharedGenericTypes => false;
 
 	public virtual MethodReturnType MethodReturnType => new MethodReturnType(ReturnType);
@@ -248,6 +255,11 @@ public abstract class MethodReference : MemberReference, IGenericParameterProvid
 	public virtual bool HasFullGenericSharingSignature(ITypeFactory typeFactory)
 	{
 		return false;
+	}
+
+	public void InitializeInternalGenericUsage(bool neverUsed)
+	{
+		_genericHiddenMethodNeverUsed = neverUsed;
 	}
 
 	public abstract MethodDefinition Resolve();

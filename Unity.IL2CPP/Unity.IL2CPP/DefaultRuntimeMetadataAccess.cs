@@ -97,7 +97,7 @@ public sealed class DefaultRuntimeMetadataAccess : IRuntimeMetadataAccess
 	public string HiddenMethodInfo(MethodReference method)
 	{
 		MethodReference methodReference = _typeResolver.Resolve(method);
-		if ((method.IsGenericInstance || method.DeclaringType.IsGenericInstance) && !method.DeclaringType.IsDelegate)
+		if ((method.IsGenericInstance || method.DeclaringType.IsGenericInstance) && !method.DeclaringType.IsDelegate && !method.IsGenericHiddenMethodNeverUsed)
 		{
 			_context.Global.Collectors.GenericMethods.Add(_context, methodReference);
 			_methodMetadataUsage.AddInflatedMethod(methodReference, InitRuntimeDataInline);
