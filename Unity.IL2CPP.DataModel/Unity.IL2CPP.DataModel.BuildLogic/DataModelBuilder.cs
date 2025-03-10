@@ -505,19 +505,22 @@ public class DataModelBuilder : IDisposable
 							}
 						}
 
-						if (instr.Operand is MethodReference)
+						if (instr.OpCode == OpCodes.Callvirt)
 						{
-							var operandMethod = instr.Operand as MethodReference;
-
-							if (operandMethod is GenericInstanceMethod)
+							if (instr.Operand is GenericInstanceMethod)
 							{
-								var genericOperandMethod = operandMethod as GenericInstanceMethod;
+								var genericOperandMethod = instr.Operand as GenericInstanceMethod;
 								if (genericOperandMethod.HasGenericArguments)
 								{
 									hasNoAnyGenericMethodCalls = false;
 									break;
 								}
 							}
+						}
+
+						if (instr.Operand is MethodReference)
+						{
+							var operandMethod = instr.Operand as MethodReference;
 
 							if (operandMethod.DeclaringType is GenericInstanceType)
 							{
