@@ -488,7 +488,10 @@ public class DataModelBuilder : IDisposable
 							{
 								var operandMethod = instr.Operand as MethodReference;
 
-								if (operandMethod.FullName == "System.Void System.ByReference`1<T>::.ctor(T&)")
+								if (operandMethod.FullName == "System.Void System.ByReference`1<T>::.ctor(T&)" ||
+									operandMethod.FullName == "System.Void System.Span`1<T>::.ctor(T[])" ||
+									operandMethod.FullName == "System.Void System.Span`1<T>::.ctor(System.Void*,System.Int32)" ||
+									operandMethod.FullName == "System.Void System.Span`1<T>::.ctor(T[],System.Int32,System.Int32)")
 									continue;
 
 								if (operandMethod.ContainsGenericParameter || operandMethod.DeclaringType.ContainsGenericParameter)
