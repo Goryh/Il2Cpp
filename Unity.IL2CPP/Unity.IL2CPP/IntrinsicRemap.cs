@@ -289,7 +289,10 @@ public class IntrinsicRemap
 		{ "System.Void System.Runtime.CompilerServices.Unsafe::WriteUnaligned(System.Byte&,T)", "il2cpp_unsafe_write_unaligned" },
 		{ "System.Void System.Runtime.CompilerServices.Unsafe::WriteUnaligned(System.Void*,T)", "il2cpp_unsafe_write_unaligned" },
 		{ "T& System.Span`1::get_Item(System.Int32)", "il2cpp_span_get_item" },
-		{ "T& modreq(System.Runtime.InteropServices.InAttribute) System.ReadOnlySpan`1::get_Item(System.Int32)", "il2cpp_span_get_item" }
+		{ "T& modreq(System.Runtime.InteropServices.InAttribute) System.ReadOnlySpan`1::get_Item(System.Int32)", "il2cpp_span_get_item" },
+		{ "System.Void System.Span`1::.ctor(System.Void*,System.Int32)", "il2cpp_array_as_span" },
+		{ "System.Void System.Span`1::.ctor(T[])", "il2cpp_array_as_span" },
+		{ "System.Void System.Span`1::.ctor(T[],System.Int32,System.Int32)", "il2cpp_array_as_span" },
 	}.AsReadOnly());
 
 	private static readonly ReadOnlyDictionary<string, IntrinsicRemapCustomCall> MethodNameMappingCustomCall = new Dictionary<string, IntrinsicRemapCustomCall>

@@ -1477,6 +1477,37 @@ inline T* il2cpp_span_get_item(T* refPtrValue, int32_t index, int32_t length)
 }
 
 template<typename T>
+inline void il2cpp_array_as_span(T* spanPtr, void* ptr, int32_t length)
+{
+    spanPtr->____pointer.____value = (intptr_t)ptr;
+    spanPtr->____length = (int32_t)length;
+}
+
+template<typename T, typename A>
+inline void il2cpp_array_as_span(T* spanPtr, A* arrPtr)
+{
+    spanPtr->____pointer.____value = (intptr_t)0;
+    spanPtr->____length = (int32_t)0;
+    if (arrPtr != NULL)
+    {
+        spanPtr->____pointer.____value = (intptr_t)arrPtr->m_Items;
+        spanPtr->____length = (int32_t)arrPtr->max_length;
+    }
+}
+
+template<typename T, typename A>
+inline void il2cpp_array_as_span(T* spanPtr, A* arrPtr, int32_t start, int32_t length)
+{
+    spanPtr->____pointer.____value = (intptr_t)0;
+    spanPtr->____length = (int32_t)0;
+    if (arrPtr != NULL)
+    {
+        spanPtr->____pointer.____value = (intptr_t)(arrPtr->m_Items + start);
+        spanPtr->____length = length;
+    }
+}
+
+template<typename T>
 inline T* il2cpp_unsafe_unbox(RuntimeObject* obj, RuntimeClass* klass)
 {
     return reinterpret_cast<T*>(UnBox(obj, klass));
