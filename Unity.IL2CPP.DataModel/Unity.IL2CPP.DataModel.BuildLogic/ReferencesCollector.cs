@@ -63,13 +63,13 @@ internal static class ReferencesCollector
 			{
 				if (genericParameter.Type == Mono.Cecil.GenericParameterType.Type)
 				{
-					if (TypeReferenceEqualityComparer.AreEqual(genericParameter.DeclaringType, genericParameter.DeclaringType.Resolve()))
+					if (TypeReferenceEqualityComparer.AreEqual(genericParameter.DeclaringType, (Mono.Cecil.TypeReference)genericParameter.DeclaringType.Resolve(), (TypeComparisonMode)0))
 					{
 						_types.Add(genericParameter);
 						return;
 					}
 				}
-				else if (genericParameter.Type == Mono.Cecil.GenericParameterType.Method && MethodReferenceComparer.AreEqual(genericParameter.DeclaringMethod, genericParameter.DeclaringMethod.Resolve()))
+				else if (genericParameter.Type == Mono.Cecil.GenericParameterType.Method && MethodReferenceComparer.AreEqual(genericParameter.DeclaringMethod, (Mono.Cecil.MethodReference)genericParameter.DeclaringMethod.Resolve(), (MethodComparisonMode)0, (TypeComparisonMode)0))
 				{
 					_types.Add(genericParameter);
 					return;

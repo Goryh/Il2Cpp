@@ -26,7 +26,7 @@ internal class WindowsRuntimeLoading
 	private static void ImmediateReadEnoughToMove(Mono.Cecil.AssemblyDefinition assembly)
 	{
 		assembly.MainModule.ImmediateRead();
-		ClearMetadataTokens(assembly.AllDefinedTypes().ToArray());
+		ClearMetadataTokens(CecilExtensions.AllDefinedTypes(assembly).ToArray());
 	}
 
 	private static void AddToMetadataAssembly(Mono.Cecil.AssemblyDefinition metadataAssembly, Mono.Cecil.AssemblyDefinition otherAssembly)

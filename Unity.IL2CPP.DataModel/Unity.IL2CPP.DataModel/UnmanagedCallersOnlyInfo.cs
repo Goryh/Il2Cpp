@@ -24,7 +24,7 @@ public sealed class UnmanagedCallersOnlyInfo
 
 	public static UnmanagedCallersOnlyInfo FromCecil(Mono.Cecil.MethodDefinition methodDefinition)
 	{
-		Mono.Cecil.CustomAttribute unmanagedCallersOnly = methodDefinition.CustomAttributes.FirstOrDefault((Mono.Cecil.CustomAttribute ca) => ca.AttributeType.FullNameEquals("System.Runtime.InteropServices", "UnmanagedCallersOnlyAttribute"));
+		Mono.Cecil.CustomAttribute unmanagedCallersOnly = methodDefinition.CustomAttributes.FirstOrDefault((Mono.Cecil.CustomAttribute ca) => CecilExtensions.FullNameEquals(ca.AttributeType, "System.Runtime.InteropServices", "UnmanagedCallersOnlyAttribute"));
 		if (unmanagedCallersOnly == null)
 		{
 			return null;
@@ -35,7 +35,7 @@ public sealed class UnmanagedCallersOnlyInfo
 		{
 			errors.Add("An instance method may not have the UnmanagedCallersOnly attribute");
 		}
-		if (methodDefinition.ContainsGenericParameters())
+		if (MethodReferenceExtensions.ContainsGenericParameters((Mono.Cecil.MethodReference)methodDefinition))
 		{
 			errors.Add("A generic method method may not have the UnmanagedCallersOnly attribute");
 		}

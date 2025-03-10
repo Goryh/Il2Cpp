@@ -44,7 +44,7 @@ internal static class DefinitionPopulater
 			select e.Resolve() into e
 			where e != null
 			select e).Select(assemblyData.ResolveReference).ToArray().AsReadOnly());
-		moduleDefinition.InitializeResources(source.HasResources ? source.Resources.Select((Mono.Cecil.Resource r) => r.ResourceType switch
+		moduleDefinition.InitializeResources(source.HasResources ? source.Resources.Select<Mono.Cecil.Resource, Unity.IL2CPP.DataModel.Resource>((Mono.Cecil.Resource r) => r.ResourceType switch
 		{
 			Mono.Cecil.ResourceType.Embedded => new EmbeddedResource((Mono.Cecil.EmbeddedResource)r), 
 			Mono.Cecil.ResourceType.Linked => new LinkedResource((Mono.Cecil.LinkedResource)r), 
@@ -193,13 +193,13 @@ internal static class DefinitionPopulater
 			{
 				continue;
 			}
-			TypeReference returnType = assemblyData.ResolveReference(GenericParameterResolver.ResolveReturnTypeIfNeeded(methodDef.Definition));
+			TypeReference returnType = assemblyData.ResolveReference(GenericParameterResolver.ResolveReturnTypeIfNeeded((Mono.Cecil.MethodReference)methodDef.Definition));
 			methodDef.InitializeReturnType(returnType);
 			methodDef.MethodReturnType.InitializeReturnType(returnType);
 			PopulateMethodDefinitionProperties(methodDef);
 			foreach (ParameterDefinition parameter in methodDef.Parameters)
 			{
-				parameter.InitializeParameterType(assemblyData.ResolveReference(GenericParameterResolver.ResolveParameterTypeIfNeeded(methodDef.Definition, parameter.Definition)));
+				parameter.InitializeParameterType(assemblyData.ResolveReference(GenericParameterResolver.ResolveParameterTypeIfNeeded((Mono.Cecil.MethodReference)methodDef.Definition, (ParameterReference)parameter.Definition)));
 				PopulateCustomAttrProvider(assemblyData, parameter);
 				PopulateMarshalInfoProvider(assemblyData, parameter, parameter.Definition);
 			}

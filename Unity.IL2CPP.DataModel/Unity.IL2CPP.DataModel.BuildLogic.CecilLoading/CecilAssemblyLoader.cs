@@ -21,7 +21,7 @@ internal class CecilAssemblyLoader
 		AssemblyCache assemblyCache = new AssemblyCache();
 		AwesomeResolver awesomeResolver = new AwesomeResolver(assemblyCache);
 		ExportedTypeResolver exportedTypeResolver = new ExportedTypeResolver();
-		NewWindowsRuntimeAwareMetadataResolver metadataResolver = new NewWindowsRuntimeAwareMetadataResolver(awesomeResolver, exportedTypeResolver);
+		NewWindowsRuntimeAwareMetadataResolver metadataResolver = new NewWindowsRuntimeAwareMetadataResolver((Unity.Cecil.Awesome.IAssemblyResolver)(object)awesomeResolver, exportedTypeResolver);
 		ReaderParameters dllReaderParametersWithoutSymbols = CreateReaderParameters(parameters.ApplyWindowsRuntimeProjections, awesomeResolver, metadataResolver);
 		SplitWindowsRuntimeAssemblies((from asm in ParallelHelpers.Map(EstablishSizeOrdering(allAssemblyPaths), delegate(AssemblyLoadSettings asmSettings)
 			{
@@ -68,7 +68,7 @@ internal class CecilAssemblyLoader
 		{
 			assembly.Source.MainModule.ImmediateRead();
 			bool loadSymbols = assembly.Source.MainModule.HasSymbols;
-			foreach (Mono.Cecil.TypeDefinition type in assembly.Source.AllDefinedTypes())
+			foreach (Mono.Cecil.TypeDefinition type in CecilExtensions.AllDefinedTypes(assembly.Source))
 			{
 				if (!type.HasMethods)
 				{
@@ -98,7 +98,7 @@ internal class CecilAssemblyLoader
 		return new ReaderParameters
 		{
 			AssemblyResolver = awesomeResolver,
-			MetadataResolver = metadataResolver,
+			MetadataResolver = (IMetadataResolver)metadataResolver,
 			ReadSymbols = false,
 			SymbolReaderProvider = null,
 			ApplyWindowsRuntimeProjections = applyWindowsRuntimeProjections,

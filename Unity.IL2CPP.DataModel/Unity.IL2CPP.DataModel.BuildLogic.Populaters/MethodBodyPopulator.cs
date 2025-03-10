@@ -26,7 +26,7 @@ internal class MethodBodyPopulator
 			if (source.Body.ThisParameter != null)
 			{
 				thisParam = new ParameterDefinition(source.Body.ThisParameter, ReadOnlyCollectionCache<CustomAttribute>.Empty, null);
-				thisParam.InitializeParameterType(assemblyData.ResolveReference(GenericParameterResolver.ResolveParameterTypeIfNeeded(source, source.Body.ThisParameter)));
+				thisParam.InitializeParameterType(assemblyData.ResolveReference(GenericParameterResolver.ResolveParameterTypeIfNeeded((Mono.Cecil.MethodReference)source, (ParameterReference)source.Body.ThisParameter)));
 			}
 			method.InitializeMethodBody(new MethodBody(method, thisParam, source.Body.InitLocals, source.Body.CodeSize, localVariables, instructions, CreateExceptionHandlers(assemblyData, method, source, instructionMap)));
 		}
