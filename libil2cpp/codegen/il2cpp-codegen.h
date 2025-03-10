@@ -1473,7 +1473,6 @@ bool il2cpp_codegen_is_unmanaged(const RuntimeMethod* method);
 template<typename T>
 inline T* il2cpp_span_get_item(T* refPtrValue, int32_t index, int32_t length)
 {
-    IL2CPP_ARRAY_BOUNDS_CHECK(index, length);
     return &refPtrValue[index];
 }
 
