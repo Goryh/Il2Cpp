@@ -487,6 +487,10 @@ public class DataModelBuilder : IDisposable
 							if (instr.Operand is MethodReference)
 							{
 								var operandMethod = instr.Operand as MethodReference;
+
+								if (operandMethod.FullName == "System.Void System.ByReference`1<T>::.ctor(T&)")
+									continue;
+
 								if (operandMethod.ContainsGenericParameter || operandMethod.DeclaringType.ContainsGenericParameter)
 								{
 									hasNoAnyGenericMethodCalls = false;
